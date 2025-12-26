@@ -44,7 +44,7 @@ for(vec_size in vec_sizes) {
 * 32gb RAM
 
 ```sh
-sudo apt-get install -y libtcmalloc-minimal4 libjemalloc1
+sudo apt-get install -y libtcmalloc-minimal4t64 libjemalloc2
 ```
 
 Also need to install `mallinfo` pkg by Simon Urbanek.
@@ -84,8 +84,8 @@ Here at the beginning we create biggest list of largest vectors first. Then list
 ```sh
 Rscript R/generate-data.R  data/create_big_obj_first/glibc_malloc.csv
 Rscript R/generate-data.R  data/create_big_obj_first/glibc_malloc_trim.csv TRUE TRUE
-env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1 Rscript R/generate-data.R  data/create_big_obj_first/jemalloc.csv
-env LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4 Rscript R/generate-data.R  data/create_big_obj_first/tcmalloc.csv
+env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2 Rscript R/generate-data.R  data/create_big_obj_first/jemalloc.csv
+env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4 Rscript R/generate-data.R  data/create_big_obj_first/tcmalloc.csv
 ```
 ![](data/create_big_obj_first/time_spent.png)
 ![](data/create_big_obj_first/visual_stats.png)
@@ -118,8 +118,8 @@ env LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4 Rscript R/generate-data.R  data
 ```sh
 Rscript R/generate-data.R  data/create_small_obj_first/glibc_malloc.csv FALSE
 Rscript R/generate-data.R  data/create_small_obj_first/glibc_malloc_trim.csv FALSE TRUE
-env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1 Rscript R/generate-data.R  data/create_small_obj_first/jemalloc.csv FALSE
-env LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4 Rscript R/generate-data.R  data/create_small_obj_first/tcmalloc.csv FALSE
+env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2 Rscript R/generate-data.R  data/create_small_obj_first/jemalloc.csv FALSE
+env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4 Rscript R/generate-data.R  data/create_small_obj_first/tcmalloc.csv FALSE
 ```
 ![](data/create_small_obj_first/time_spent.png)
 ![](data/create_small_obj_first/visual_stats.png)

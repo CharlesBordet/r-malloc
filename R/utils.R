@@ -6,10 +6,10 @@ top_ram_used_resident = function(pid = Sys.getpid(), indicator = "RES") {
   res = top_out[[indicator]]
   # catch if top reported RAM in gigabytes
   if(grepl(pattern = "g$", res))
-    res = as.numeric(gsub("g$", "", res)) * 1e6
+    res = as.numeric(gsub(",", ".", gsub("g$", "", res))) * 1e6
   # catch if top reported RAM in megabytes
   if(grepl(pattern = "m$", res))
-    res = as.numeric(gsub("m$", "", res)) * 1e3
+    res = as.numeric(gsub(",", ".", gsub("m$", "", res))) * 1e3
   # convert to mb
   as.numeric(res) / 1e3
 }
